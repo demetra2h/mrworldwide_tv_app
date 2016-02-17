@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20160217002345) do
   create_table "videos", force: :cascade do |t|
     t.string   "embed_url"
     t.string   "title"
-    t.string   "alvum"
+    t.string   "album"
     t.string   "featured_artists"
     t.date     "released_on"
+    t.string   "tags"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
