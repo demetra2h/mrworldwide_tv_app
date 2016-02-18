@@ -1,0 +1,17 @@
+<h1> <%= @video.title %> </h1>
+
+<h4><%= link_to @video.title, @video.youtube_link %></h4>
+<iframe class="video-embed" src="<%= @video.embed_link %>" frameborder="0"
+  allowfullscreen></iframe>
+<article>
+<ul>
+  <li><%= "Title: #{@video.title}" %></li>
+  <li><%= "Album: #{@video.album}" %></li>
+  <li><%= "Featured artists: #{@video.featured_artists}" %></li>
+  <li><%= "Released on: #{@video.released_on}" %></li>
+</ul>
+  <%= link_to "Watch video", video %>
+  <%= link_to "Edit video info", edit_path(video.id) %>
+  <%= link_to "Delete video", video_path(video.id), method: :delete, data:
+  { confirm: "Are you sure you want to delete video?"} %>
+</article>

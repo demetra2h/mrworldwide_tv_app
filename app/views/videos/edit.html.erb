@@ -1,25 +1,26 @@
+<h1> Edit this video</h1>
 
-<%= form_for @video do |f|%>
+<%= form_for @video do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
-<br>
+  <br>
   <%= f.label :album %>
   <%= f.text_field :album %>
-<br>
+  <br>
   <%= f.label :featured_artists %>
   <%= f.text_field :featured_artists %>
-<br>
+  <br>
   <%= f.label :released_on %>
   <%= f.date_select :released_on, order: [:month, :day, :year] %>
-<br>
+  <br>
   <%= f.label :embed_url, "YouTube Id" %>
   <%= f.text_field :embed_url %>
-<br>
-  <%= f.submit "Create!" %>
-<% end %>
+  <br>
+  <%= f.submit "Edit" %>
 
+<% end %>
 <ul>
-  <% @video.errors.full_messages.each do |message| %>
+<% @video.errors.full_messages.each do |message| %>
   <li><%= message %></li>
   <% end %>
-</ul>
+  </ul>

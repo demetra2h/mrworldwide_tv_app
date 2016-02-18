@@ -7,6 +7,11 @@
   <article>
     <h4><%= link_to video.title, video.youtube_link %></h4>
     <%=raw video.embed %>
+    <%= link_to "Watch video", video %>
+    <%= link_to "Edit video info", edit_path(video.id) %>
+    <%= link_to "Delete video", video_path(video.id), method: :delete, data:
+  { confirm: "Are you sure you want to delete video?"} %>
+
   </article>
   <% end %>
 </main>
