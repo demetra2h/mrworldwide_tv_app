@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
  root "videos#index"
 
- get "/videos" => "videos#index"
+ resources :videos, only: [:index, :new, :create, :edit, :update]
+ #get "/videos" => "videos#index"
 
- get "/videos/new" => "videos#new"
+ #get "/videos/new" => "videos#new"
 
- post "/videos" => "videos#create"
+ #post "/videos" => "videos#create"
 
- get "/videos/:id" => "videos#show", as: :video
+ #get "/videos/:id" => "videos#show", as: :video
 
- get "/videos/:id/edit" => "videos#edit", as: :edit
+ #get "/videos/:id/edit" => "videos#edit", as: :edit
 
- patch "/videos/:id" => "videos#update"
+ #patch "/videos/:id" => "videos#update"
 
- delete "/videos/:id" => "videos#destroy"
+ #delete "/videos/:id" => "videos#destroy"
 end

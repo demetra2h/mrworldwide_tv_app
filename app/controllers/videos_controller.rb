@@ -2,12 +2,6 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
-
-    render :index
-  end
-
-  def show
-    @video = Video.find(params[:id])
   end
 
   def new
@@ -16,19 +10,12 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(self.video_params)
+
     if @video.save
-      redirect_to videos_path
+      redirect_to videos_path(anchor: @video.fragment_id)
     else
       render :new
-  end
-end
-
-  def video_params
-    params.require(:video).permit(:title, :embed_url, :released_on, :featured_artist)
-  end
-
-  def show
-    @video = Video.find(params[:id])
+    end
   end
 
   def edit
@@ -37,8 +24,8 @@ end
 
   def update
     @video = Video.find(params[:id])
-    if @video.update
-      redirect_to videos_path
+    if @video.update(self.video_params)
+      redirect_to videos_path(anchor: @video.fragment_id)
     else
       render :edit
     end
@@ -47,7 +34,19 @@ end
   def destroy
     @video = Video.find(params[:id])
     @video.destroy
+
+    flash[:message] = "'#{@video.title}' removed!"
     redirect_to videos_path
   end
 
+  def video_params
+    params.require(:video).permit(
+      :title,
+      :album,
+      :youtube_id,
+      :featured_artists,
+      :tags,
+      :released_on
+    )
+  end
 end
